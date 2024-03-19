@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 
+import '../home_screen.dart';
+
 class AddPlayer extends StatefulWidget {
-  const AddPlayer({super.key});
+  final void Function(String) onSubmitted;
+  const AddPlayer({super.key, required this.onSubmitted});
 
   @override
   State<AddPlayer> createState() => _AddPlayerState();
 }
 
 class _AddPlayerState extends State<AddPlayer> {
+  TextEditingController? _textEditingController;
+  @override
+  void initState() {
+    super.initState();
+    _textEditingController = TextEditingController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -18,7 +28,7 @@ class _AddPlayerState extends State<AddPlayer> {
         width: 120,
         height: 40,
         child: Text(
-          'hi',
+          '${newUser.userName}',
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
         ),
@@ -41,6 +51,10 @@ class _AddPlayerState extends State<AddPlayer> {
             child: Column(
               children: [
                 TextField(
+                  onSubmitted: (String value) {
+                    widget.onSubmitted(value);
+                  },
+                  controller: _textEditingController,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),

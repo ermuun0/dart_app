@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:wfa/user.dart';
+
+import 'home_screen.dart';
 
 class Points extends StatefulWidget {
-  const Points({super.key});
+  final User user;
+  const Points(this.user, {super.key});
 
   @override
   State<Points> createState() => _PointsState();
 }
 
 class _PointsState extends State<Points> {
+  late User user;
+  @override
+  void initState() {
+    user = widget.user;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +34,7 @@ class _PointsState extends State<Points> {
             Navigator.pop(context);
           },
         ),
+        Text('${newUser.userName}'),
       ])),
     );
   }
