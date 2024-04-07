@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wfa/pop_up/add_player.dart';
 import 'package:wfa/point_section.dart';
-import 'package:wfa/pop_up/first_to.dart';
+import 'package:wfa/pop_up/first.dart';
 import 'package:wfa/slide_through.dart';
 import 'package:wfa/user.dart';
 
@@ -37,11 +37,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               AddPlayer(
                 onSubmitted: _createUser,
+                index: 0,
               ),
               SizedBox(
                 width: 70,
               ),
-              AddPlayer(onSubmitted: _createUser)
+              AddPlayer(
+                onSubmitted: _createUser,
+                index: 1,
+              )
             ],
           ),
           Image.asset('assets/vs (1).png'),
@@ -50,11 +54,17 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 width: 20,
               ),
-              AddPlayer(onSubmitted: _createUser),
+              AddPlayer(
+                onSubmitted: _createUser,
+                index: 2,
+              ),
               SizedBox(
                 width: 70,
               ),
-              AddPlayer(onSubmitted: _createUser)
+              AddPlayer(
+                onSubmitted: _createUser,
+                index: 3,
+              )
             ],
           ),
           SizedBox(
@@ -84,14 +94,14 @@ class _HomeScreenState extends State<HomeScreen> {
               backgroundColor: Color(0xff514f57),
             ),
           ),
-          SizedBox(
-            height: 160,
-          ),
-          Text('First To', style: TextStyle(color: Colors.white, fontSize: 25)),
+          // SizedBox(
+          //   height: 160,
+          // ),
+          // Text('First To', style: TextStyle(color: Colors.white, fontSize: 25)),
           SizedBox(
             height: 30,
           ),
-          FirstTo(),
+          MyWidget(),
           SizedBox(
             height: 40,
           ),

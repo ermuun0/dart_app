@@ -4,18 +4,20 @@ import '../home_screen.dart';
 
 class AddPlayer extends StatefulWidget {
   final void Function(String) onSubmitted;
-  const AddPlayer({super.key, required this.onSubmitted});
+  final int index;
+  const AddPlayer({super.key, required this.onSubmitted, required this.index});
 
   @override
   State<AddPlayer> createState() => _AddPlayerState();
 }
 
 class _AddPlayerState extends State<AddPlayer> {
-  TextEditingController? _textEditingController;
+  List<TextEditingController> _controller = [
+    for (int i = 1; i < 5; i++) TextEditingController()
+  ];
   @override
   void initState() {
     super.initState();
-    _textEditingController = TextEditingController();
   }
 
   @override
@@ -54,7 +56,7 @@ class _AddPlayerState extends State<AddPlayer> {
                   onSubmitted: (String value) {
                     widget.onSubmitted(value);
                   },
-                  controller: _textEditingController,
+                  controller: _controller[widget.index],
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),

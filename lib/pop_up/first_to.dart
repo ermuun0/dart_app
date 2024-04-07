@@ -14,50 +14,51 @@ class _FirstToState extends State<FirstTo> {
     return ElevatedButton(
         onPressed: () async {
           await showDialog<void>(
-              context: context,
-              builder: (context) => AlertDialog(
-                    content: Stack(
-                      clipBehavior: Clip.none,
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              content: Stack(
+                clipBehavior: Clip.none,
+                children: <Widget>[
+                  Positioned(
+                    right: -40,
+                    top: -40,
+                    child: InkResponse(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const CircleAvatar(
+                        backgroundColor: Colors.red,
+                        child: Icon(Icons.close),
+                      ),
+                    ),
+                  ),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Positioned(
-                          right: -40,
-                          top: -40,
-                          child: InkResponse(
-                            onTap: () {
-                              Navigator.of(context).pop();
+                        Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: TextFormField(),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: ElevatedButton(
+                            child: const Text('Submit'),
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                _formKey.currentState!.save();
+                              }
                             },
-                            child: const CircleAvatar(
-                              backgroundColor: Colors.red,
-                              child: Icon(Icons.close),
-                            ),
                           ),
-                        ),
-                        Form(
-                          key: _formKey,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: TextFormField(),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: ElevatedButton(
-                                  child: const Text('Submit'),
-                                  onPressed: () {
-                                    if (_formKey.currentState!.validate()) {
-                                      _formKey.currentState!.save();
-                                    }
-                                  },
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                        )
                       ],
                     ),
-                  ));
+                  ),
+                ],
+              ),
+            ),
+          );
         },
         child: Container(
           width: 150,
