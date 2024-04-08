@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1093108947982",
+    "project_id": "darts-489ec",
+    "storage_bucket": "darts-489ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093108947982:android:349173bfe603b8c939b05f",
+        "android_client_info": {
+          "package_name": "com.example.test_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlvK8g8vpcP3O1w0hA6ZS02uCTbHQmESY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
