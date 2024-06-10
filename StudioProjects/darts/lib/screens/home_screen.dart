@@ -1,4 +1,3 @@
-
 import 'package:darts/pop_up/first_to.dart';
 import 'package:flutter/material.dart';
 import '/pop_up/add_player.dart';
@@ -15,28 +14,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   List<User> users = [];
   int currentPoint = 0;
-
 
   @override
   void initState() {
     super.initState();
-    User user1 = User(1, 'PLayer 1', 0);
-    User user2 = User(2,'Player 2', 0);
+    User user1 = User(1, 'Player 1', 0);
+    User user2 = User(2, 'Player 2', 0);
     User user3 = User(3, 'Player 3', 0);
-    User user4 = User(4,'Player 4', 0);
+    User user4 = User(4, 'Player 4', 0);
     users.add(user1);
     users.add(user2);
     users.add(user3);
     users.add(user4);
   }
 
-
   @override
   Widget build(BuildContext context) {
-    final number = ModalRoute.of(context)!.settings.arguments;
+    final number = ModalRoute.of(context)!.settings.arguments == null
+        ? 0
+        : ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xff212328),
@@ -68,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
               )
             ],
           ),
-          Image.asset('darts.jpeg'),
+          new Image.asset('assets/vs.png', width: 100, height: 100,),
           Row(
             children: [
               SizedBox(
@@ -97,9 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).push(_createRoute(currentPoint));
-              setState(() {
-
-              });
+              setState(() {});
             },
             child: Container(
               width: 150,
@@ -124,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(
             height: 30,
           ),
-          FirstTo(),
+          First(onSubmitted: (int ) {},),
           SizedBox(
             height: 40,
           ),
@@ -138,8 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
     point = currentPoint;
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
-           SlideThrough(point: point),
-
+          SlideThrough(point: point),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(0.0, 1.0);
         const end = Offset.zero;

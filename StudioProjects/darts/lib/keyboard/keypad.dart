@@ -1,4 +1,5 @@
 import 'package:darts/pop_up/menu.dart';
+import 'package:darts/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class NumericKeypad extends StatefulWidget {
@@ -72,7 +73,7 @@ class _NumericKeypadState extends State<NumericKeypad> {
                   shape: RoundedRectangleBorder(),
                 ),
                 onPressed: () {
-Menu();
+          Navigator.pop(context);
                 },
                 child:Text(
                   'Menu',
@@ -90,7 +91,9 @@ Menu();
                     backgroundColor: Color(0xff212328),
                     shape: RoundedRectangleBorder(),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+
+                  },
                   child: Text(
                     'Done',
                     style: TextStyle(color: Colors.white),

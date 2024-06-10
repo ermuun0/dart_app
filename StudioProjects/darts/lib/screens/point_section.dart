@@ -17,11 +17,21 @@ class PointSection extends StatefulWidget {
 class _PointsState extends State<PointSection> {
   TextEditingController textController = TextEditingController();
   late User user;
+  List<User> users = [];
   @override
   void initState() {
     user = widget.user;
     super.initState();
+    User user1 = User(1, 'Player 1', 0);
+    User user2 = User(2, 'Player 2', 0);
+    User user3 = User(3, 'Player 3', 0);
+    User user4 = User(4, 'Player 4', 0);
+    users.add(user1);
+    users.add(user2);
+    users.add(user3);
+    users.add(user4);
   }
+
 
   String text = "";
 
@@ -34,19 +44,13 @@ class _PointsState extends State<PointSection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       backgroundColor: Color(0xff212328),
       body: SafeArea(
         child: Column(
           children: [
-            IconButton(
-              icon: Icon(
-                Icons.arrow_back_outlined,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
+            Pro(),
+            Pro(),
             Pro(),
             Pro(),
             TextField(

@@ -1,86 +1,74 @@
 import 'package:flutter/material.dart';
-import 'package:numberpicker/numberpicker.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class First extends StatefulWidget {
+  final void Function(int) onSubmitted;
+  const First({super.key, required this.onSubmitted});
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<First> createState() => _AddPlayerState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
-  int _currentIntValue = 10;
+class _AddPlayerState extends State<First> {
+  final TextEditingController _textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        NumberPicker(
-          value: _currentIntValue,
-          minValue: 10,
-          maxValue: 100,
-          step: 10,
-          haptics: true,
-          onChanged: (value) => setState(() => _currentIntValue = value),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Color(0xff514f57),
+      ),
+      child: Container(
+        width: 120,
+        height: 40,
+        child: Text(
+          _textEditingController.text,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 30, fontWeight: FontWeight.w400, color: Colors.white),
         ),
-        SizedBox(height: 32),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              icon: Icon(Icons.remove),
-              onPressed: () => setState(() {
-                final newValue = _currentIntValue - 10;
-                _currentIntValue = newValue.clamp(0, 100);
-              }),
-            ),
-            Text('Current int value: $_currentIntValue'),
-            IconButton(
-              icon: Icon(Icons.add),
-              onPressed: () => setState(() {
-                final newValue = _currentIntValue + 20;
-                _currentIntValue = newValue.clamp(0, 100);
-              }),
-            ),
-          ],
-        ),
-        // Divider(color: Colors.grey, height: 32),
-        // Text('Horizontal', style: Theme.of(context).textTheme.headline6),
-        // NumberPicker(
-        //   value: _currentHorizontalIntValue,
-        //   minValue: 0,
-        //   maxValue: 100,
-        //   step: 10,
-        //   itemHeight: 100,
-        //   axis: Axis.horizontal,
-        //   onChanged: (value) =>
-        //       setState(() => _currentHorizontalIntValue = value),
-        //   decoration: BoxDecoration(
-        //     borderRadius: BorderRadius.circular(16),
-        //     border: Border.all(color: Colors.black26),
-        //   ),
-        // ),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: [
-        //     IconButton(
-        //       icon: Icon(Icons.remove),
-        //       onPressed: () => setState(() {
-        //         final newValue = _currentHorizontalIntValue - 10;
-        //         _currentHorizontalIntValue = newValue.clamp(0, 100);
-        //       }),
-        //     ),
-        //     Text('Current horizontal int value: $_currentHorizontalIntValue'),
-        //     IconButton(
-        //       icon: Icon(Icons.add),
-        //       onPressed: () => setState(() {
-        //         final newValue = _currentHorizontalIntValue + 20;
-        //         _currentHorizontalIntValue = newValue.clamp(0, 100);
-        //       }),
-        //     ),
-        //   ],
-        // ),
-      ],
+      ),
+      onPressed: () {
+        openDialog(_textEditingController);
+      },
     );
   }
+
+  Future openDialog(TextEditingController _textEditingController) => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Center(
+            child: Text('Enter player name'),
+          ),
+          content: Container(
+            width: 100,
+            height: 300,
+            child: Column(
+              children: [
+                TextField(
+                  onSubmitted: (String value) {},
+                  controller: _textEditingController,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    fillColor: Color(0xff212328),
+                    filled: true,
+                  ),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          'Done',
+                          style: TextStyle(),
+                        ),
+                      ),
+                    ))
+              ],
+            ),
+          ),
+        ),
+      );
 }
