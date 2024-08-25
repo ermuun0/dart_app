@@ -1,5 +1,8 @@
-class Points{
-  final int item;
+import 'package:get/get.dart';
 
-  const Points(this.item);
+class PointsModel extends GetxController{
+  var point= 501.obs.toInt();
+
+
+
 }

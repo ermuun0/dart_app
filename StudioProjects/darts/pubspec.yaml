@@ -38,6 +38,8 @@ dependencies:
   numberpicker: ^2.1.2
   onscreen_num_keyboard: ^1.0.4
   bloc: ^8.1.4
+  provider: ^6.1.2
+  get: ^4.6.6
 
 dev_dependencies:
   flutter_test:

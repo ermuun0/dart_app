@@ -1,14 +1,12 @@
-import 'package:darts/keyboard/keyboard.dart';
+
 import 'package:darts/keyboard/keypad.dart';
 import 'package:flutter/material.dart';
 import 'player_pro.dart';
-import '../models/user.dart';
-import 'package:onscreen_num_keyboard/onscreen_num_keyboard.dart';
-import 'slide_through.dart';
+
 
 class PointSection extends StatefulWidget {
-  final User user;
-  const PointSection(this.user, {super.key});
+
+  const PointSection({super.key});
 
   @override
   State<PointSection> createState() => _PointsState();
@@ -16,21 +14,7 @@ class PointSection extends StatefulWidget {
 
 class _PointsState extends State<PointSection> {
   TextEditingController textController = TextEditingController();
-  late User user;
-  List<User> users = [];
-  @override
-  void initState() {
-    user = widget.user;
-    super.initState();
-    User user1 = User(1, 'Player 1', 0);
-    User user2 = User(2, 'Player 2', 0);
-    User user3 = User(3, 'Player 3', 0);
-    User user4 = User(4, 'Player 4', 0);
-    users.add(user1);
-    users.add(user2);
-    users.add(user3);
-    users.add(user4);
-  }
+
 
 
   String text = "";

@@ -10,19 +10,6 @@ class Pro extends StatefulWidget {
 }
 
 class _ProState extends State<Pro> {
-  List<User> users = [];
-  @override
-  void initState() {
-    super.initState();
-    User user1 = User(1, 'PLayer 1', 0);
-    User user2 = User(2, 'Player 2', 0);
-    User user3 = User(3, 'Player 3', 0);
-    User user4 = User(4, 'Player 4', 0);
-    users.add(user1);
-    users.add(user2);
-    users.add(user3);
-    users.add(user4);
-  }
   @override
   Widget build(BuildContext context) {
     return Container(
